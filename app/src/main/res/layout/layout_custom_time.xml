@@ -13,7 +13,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:hint="AlarmClock"
+        android:hint="@string/alarmclock"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -21,7 +21,7 @@
         android:id="@+id/tvNameAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Tên báo thức"
+        android:hint="@string/t_n_b_o_th_c"
         android:textSize="15sp"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
@@ -40,7 +40,7 @@
 
     <ImageView
         android:id="@+id/imvDelete"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         app:srcCompat="@drawable/baseline_delete_24"
