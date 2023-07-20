@@ -3,24 +3,17 @@ package com.example.alarmoclock
 import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.app.TimePickerDialog
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Data
-import android.widget.Toast
-import android.widget.ToggleButton
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.example.alarmoclock.databinding.ActivityMainBinding
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
+@SuppressLint("StaticFieldLeak")
 private lateinit var binding: ActivityMainBinding
 private var list = mutableListOf<DataClock>()
-val today = Calendar.getInstance()
+val today: Calendar = Calendar.getInstance()
+@SuppressLint("StaticFieldLeak")
 private lateinit var customAdapter: CustomAdapter
 var pendingIntent: PendingIntent? = null
 var alarmManager: AlarmManager? = null
@@ -32,16 +25,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         binding.imvAddClock.setOnClickListener {
-            var intent = Intent(this, SetUpAlarm::class.java)
+            val intent = Intent(this, SetUpAlarm::class.java)
             startActivity(intent)
         }
         getValue()
         showItemAlarm()
     }
     private fun getValue() {
-        var i = intent
-        var itemListTime = i.getStringExtra("selectedTime")
-        var itemListName = i.getStringExtra("giveName")
+        val i = intent
+        val itemListTime = i.getStringExtra("selectedTime")
+        val itemListName = i.getStringExtra("giveName")
         list.add(DataClock("$itemListTime", "$itemListName"))
     }
 

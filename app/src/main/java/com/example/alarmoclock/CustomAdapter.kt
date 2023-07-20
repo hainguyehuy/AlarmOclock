@@ -40,7 +40,7 @@ class CustomAdapter(private val activity: Activity, private val list: MutableLis
                     setTitle("Confirm choose")
                     //message
                     setMessage("Do you want to  set an alarm?")
-                    // negative : phu dinh
+                    // negative
                     setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
                         dialogInterface.dismiss()
                     }
