@@ -36,11 +36,8 @@ class CustomAdapter(private val activity: Activity, private val list: MutableLis
             if (isChecked) {
                 val dialog = AlertDialog.Builder(activity)
                 dialog.apply {
-                    //title
                     setTitle("Confirm choose")
-                    //message
                     setMessage("Do you want to  set an alarm?")
-                    // negative
                     setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
                         dialogInterface.dismiss()
                     }
@@ -49,7 +46,7 @@ class CustomAdapter(private val activity: Activity, private val list: MutableLis
                         alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
                         pendingIntent = PendingIntent.getBroadcast(
                             context,
-                            111,
+                            1,
                             intent,
                             PendingIntent.FLAG_MUTABLE
                         )

@@ -10,10 +10,10 @@ import androidx.core.content.getSystemService
 
 class AlarmReceiver :BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
-        val i = Intent(context,QuestionToWu::class.java)
-        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        val i = Intent(context,QuestionToWu::class.java)
+//        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val vibrator = context!!.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        vibrator.vibrate(3000)
+        vibrator.vibrate(1000)
         Toast.makeText(context,"ALARM WAKEUP",Toast.LENGTH_SHORT).show()
         var alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
 
