@@ -20,6 +20,7 @@ class CustomAdapter(private val activity: Activity, private val list: MutableLis
     override fun getCount(): Int {
         return list.size
     }
+
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val contexts = activity.layoutInflater
@@ -34,58 +35,36 @@ class CustomAdapter(private val activity: Activity, private val list: MutableLis
 
         tbOnOff.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                val dialog = AlertDialog.Builder(activity)
-                dialog.apply {
-                    setTitle("Confirm choose")
-                    setMessage("Do you want to  set an alarm?")
-                    setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
-                        dialogInterface.dismiss()
-                    }
-                    setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
-                        Toast.makeText(activity,"Alarm on",Toast.LENGTH_SHORT).show()
-                        alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                        pendingIntent = PendingIntent.getBroadcast(
-                            context,
-                            1,
-                            intent,
-                            PendingIntent.FLAG_MUTABLE
-                        )
-                        alarmManager!!.setRepeating(AlarmManager.RTC_WAKEUP,
-                            today.timeInMillis,AlarmManager.INTERVAL_DAY, pendingIntent!!)
-
-
-                    }
-                }
-                dialog.show()
-            }
-        }
-        return rowView
-    }
-//            var time:Long
-//            if(isChecked){
-//                Toast.makeText(activity,"Alarm On", Toast.LENGTH_SHORT).show()
-//                pendingIntent = PendingIntent.getBroadcast(activity,
-//                    0,
-//                    intent,
-//                    PendingIntent.FLAG_IMMUTABLE
-//                )
-//                time = today.timeInMillis - today.timeInMillis % 60000
-//                if(System.currentTimeMillis() > time ){
-//                    time = if (Calendar.AM_PM == 0 ){
-//                        time + 1000*60*60*12
+//                val dialog = AlertDialog.Builder(activity)
+//                dialog.apply {
+//                    setTitle("Confirm choose")
+//                    setMessage("Do you want to  set an alarm?")
+//                    setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
+//                        dialogInterface.dismiss()
 //                    }
-//                    else{
-//                        time + 1000*60*60*24
+//                    setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
+                Toast.makeText(activity, "Alarm on", Toast.LENGTH_SHORT).show()
+                alarmManager =
+                    context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                pendingIntent = PendingIntent.getBroadcast(
+                    context,
+                    1,
+                    intent,
+                    PendingIntent.FLAG_MUTABLE
+                )
+                alarmManager!!.setRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    today.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent!!
+                )
+
 //                    }
 //                }
-//                alarmManager!!.setRepeating(AlarmManager.RTC_WAKEUP,time,1000, pendingIntent!!)
-//
-//            }
-//            else {
-//                alarmManager!!.cancel(pendingIntent!!)
-//                Toast.makeText(activity,"Alarm OFF", Toast.LENGTH_SHORT).show()
-//            }
-//    }
+//                dialog.show()
+            }
+        }
+
+        return rowView
+    }
 
 
 }
